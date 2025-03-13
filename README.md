@@ -1,4 +1,4 @@
-https://img.shields.io/badge/LICENSE-MIT-green
+<img src="https://img.shields.io/badge/LICENSE-MIT-green">
 
 # GitHub Auto Load More
 
