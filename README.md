@@ -1,3 +1,5 @@
+https://img.shields.io/badge/LICENSE-MIT-green
+
 # GitHub Auto Load More
 
 A Chrome extension that automatically expands all "Load more..." buttons in GitHub PR reviews until all comments are visible.
