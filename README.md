@@ -27,26 +27,58 @@ That's it! No npm, no build process needed for regular users.
 
 If you want to modify the extension or contribute to development:
 
-1. Clone this repository:
+#### Setting up the Development Environment
+
+1. **Install mise (recommended)**:
+   
+   [mise](https://github.com/jdx/mise) is a tool version manager that helps ensure consistent development environments.
+   
+   ```bash
+   # Install mise using the official installer
+   curl https://mise.jdx.dev/install.sh | sh
+
+   # Add mise to your shell
+   eval "$(~/.local/bin/mise activate zsh)"  # or bash
+   
+   # Restart your terminal or source your shell configuration
+   source ~/.zshrc  # or source ~/.bashrc
    ```
-   git clone https://github.com/yourusername/gh-auto-load-more.git
+
+2. **Clone the repository**:
+   ```bash
+   git clone https://github.com/hashiiiii/gh-auto-load-more.git
    cd gh-auto-load-more
    ```
 
-2. Install dependencies:
+3. **Install Node.js using mise**:
+   ```bash
+   # mise will read the mise.toml file and install the correct Node.js version
+   mise install
+   
+   # Verify Node.js installation
+   node --version  # Should show the version specified in mise.toml
    ```
+
+4. **Install dependencies** (important!):
+   ```bash
    npm install
    ```
 
-3. Build the extension:
-   ```
+5. **Build the extension**:
+   ```bash
    npm run build
    ```
 
-4. Open Chrome and navigate to `chrome://extensions/`
-5. Enable "Developer mode" by toggling the switch in the top-right corner
-6. Click "Load unpacked" and select the `dist` folder from this project
-7. The extension should now be installed and active
+6. **Load the extension in Chrome**:
+   - Open Chrome and navigate to `chrome://extensions/`
+   - Enable "Developer mode" by toggling the switch in the top-right corner
+   - Click "Load unpacked" and select the `dist` folder from this project
+   - The extension should now be installed and active
+
+#### Troubleshooting
+
+- If you see `tsc: command not found` or similar errors, make sure you've run `npm install` to install TypeScript locally.
+- If Node.js commands aren't using the mise-managed version, try running `eval "$(~/.local/bin/mise activate zsh)"` to refresh your environment.
 
 ## Usage
 
@@ -63,12 +95,13 @@ Once installed, the extension works automatically:
 - `manifest.json` - Chrome extension manifest file
 - `popup.html` - Simple popup UI for the extension
 - `icons/` - Directory containing extension icons
+- `mise.toml` - Configuration file for mise to manage Node.js version
 
 ## Building for Distribution
 
 To build the extension for distribution:
 
-```
+```bash
 npm run build
 cd dist && zip -r ../github-auto-load-more.zip * && cd ..
 ```
